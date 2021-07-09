@@ -1,0 +1,47 @@
+fvotacao = open("votos.txt", "r")
+
+
+candidatos = {'Candidato 1': 0, 'Candidato 2': 0, 'Candidato 3': 0, 'Candidato 4': 0, 'Candidato 5': 0}
+nulos = 0
+
+for voto in fvotacao:     ##percorre as linhas do arquivo 
+    voto = int(voto)
+    
+    if voto == 1:
+        candidatos['Candidato 1'] +=1
+    elif voto == 2 :
+        candidatos['Candidato 2'] +=1  
+    elif voto == 3 :
+        candidatos['Candidato 3'] +=1       
+    elif voto == 4 :
+        candidatos['Candidato 4'] +=1       
+    elif voto == 5 :
+        candidatos['Candidato 5'] +=1
+    elif voto < 1 or voto > 5:
+        nulos +=1       
+    
+
+max_key = [max(candidatos, key=candidatos.get)]  ##maneira de percorrer o dicionario e achar a chave pareada com o maior valor, botei numa lista pra poder fazer a comparacao abaixo
+max_vot = max(candidatos.values())
+max_keys = [k for k, v in candidatos.items() if v == max_vot] #pega todos os valores maximos no dict
+
+if max_keys > max_key:
+    print("\nOs candidatos:", max_keys, "empataram com o respectivo numero de votos:", max_vot) 
+else:
+    print("\nO candidato com o maior numero de votos foi o", max_key, "com um total de votos igual a", max_vot)  
+
+
+min_key = [min(candidatos, key=candidatos.get)]
+min_vot = min(candidatos.values()) 
+min_keys = [k for k, v in candidatos.items() if v == min_vot] #pega todos os valores minimos no dict
+
+if min_keys > min_key:
+    print("\nOs candidatos que foram menos votados:", min_keys, "empataram com o respectivo numero de votos:", min_vot) 
+else:
+    print("\nO candidato com o menor numero de votos foi o", min_key, "com um total de votos igual a", min_vot)  
+
+
+print("\nA quantia de votos nulos foram: ", nulos, "\n")
+
+
+fvotacao.close() 
