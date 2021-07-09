@@ -1,0 +1,9 @@
+lista = []
+palavra = str(input("Digite uma palavra: "))
+lista = palavra
+palavra_nospace = palavra.replace(' ', '')
+invertida = palavra_nospace[::-1]
+if invertida == palavra_nospace:
+    print("A palavra/frase: %s, é um palindromo" %palavra)
+else:
+    print("A palavra/frase: %s, nao é um palindromo" %palavra)    
