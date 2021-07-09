@@ -1,0 +1,28 @@
+def Contar(pa):
+    word = {}
+    iLetra = 0
+    for iLetra in pa:
+        if iLetra in word:
+            word[iLetra] += 1
+        else:
+            word[iLetra] = 1
+        if iLetra == ' ':
+            word.pop(iLetra)
+
+    iLetra = ''
+    for i in word:
+        if iLetra == '': #Começa como primeiro termo
+           iLetra = i
+        if word[i] > word[iLetra]:
+            iLetra = i
+
+    if word[iLetra] == 1:
+        print("Nenhum letra se repete.")
+    else:
+        print("A letra que mais repete é: %s, ela repete %d vezes" % (iLetra, word[iLetra]))
+
+    print(word)
+
+
+palavra = input ("Digite uma palavra:")
+Contar(palavra)
