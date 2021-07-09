@@ -1,0 +1,24 @@
+import pickle
+  
+arq1 = open("números.bin", "rb")
+arq2 = open("pares.bin", "wb")
+
+bin = pickle.load(arq1)
+bin_pares = []
+
+for cont in bin:
+    if cont % 2 == 0:
+        bin_pares.append(cont)
+
+pickle.dump(bin_pares, arq2)
+
+arq1.close()
+arq2.close()
+
+
+arq2 = open("pares.bin", "rb")
+
+pares = pickle.load(arq2)
+print(pares)
+
+arq2.close()
